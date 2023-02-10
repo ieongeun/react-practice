@@ -25,7 +25,7 @@ export default function Products() {
       <input
         id='checkbox'
         type='checkbox'
-        value={checked}
+        checked={checked}
         onChange={handleChange}
       />
       <label htmlFor='checkbox'>Show Only 🔥 Sale</label>
