@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { DarkModeContext, DarkModeProvider } from './context/DarkModeContext';
 export default function AppTheme(){
     return (
-        <DarkModeProvider>
+    <DarkModeProvider>
         <header>Header</header>
         <main>main</main>
         <footer>footer</footer>
@@ -11,10 +11,8 @@ export default function AppTheme(){
   );
 }
 
-function ProductDetail(params) {
+function ProductDetail() {
     const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
-    console.log(darkMode);
-    console.log(toggleDarkMode);
     return(
     <div>
         <p>DarkMode : {darkMode.toString()}</p>

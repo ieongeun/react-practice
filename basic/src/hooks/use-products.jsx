@@ -16,4 +16,4 @@ export function useProducts(checked) {
     }, [checked]);
 
     return [loading, error, products];
-}``
+}
