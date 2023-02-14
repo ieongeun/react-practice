@@ -1,25 +1,25 @@
 import './App.css';
+import Home from './pages/Home.jsx';
+import NotFound from './pages/NotFound.jsx';
+import Video from './pages/Video.jsx';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from './pages/Root';
 
 const router = createBrowserRouter([
   {
     path:'/',
-    element: <p>메인입니다</p>,
-    errorElement : <p>에러야🤢🤢</p>
-  },
-  {
-    path:'/radio',
-    element: <p>레디오레디오</p>,
+    element: <Root/>,
+    errorElement : <NotFound/>,
+    children: [
+      { index: true, element: <Home /> },
+      { path: '/video', element: <Video /> }
+    ]
   }
 ])
-
-//1분
 
 function App() {
   return (
     <p>App
-
-
       <RouterProvider router={router}/>
     </p>
   );
