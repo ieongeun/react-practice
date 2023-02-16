@@ -11,5 +11,3 @@ export default function Todo({todo:{id, text, status}, onDelete, onUpdate}) {
         </li>
     );
 }
-
-// 아 바보 이 하나의 컴포넌트가 하나지 그럼 ()=> 이렇게할일도 없었잖아 ㄱ치 
