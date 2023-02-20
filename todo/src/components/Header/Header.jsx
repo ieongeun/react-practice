@@ -1,4 +1,6 @@
 import React from 'react';
+import style from "./Header.module.css";
+
 
 export default function Header({filters,filter,onFilter}) {
     const handleClick = (e) => onFilter(e.target.innerHTML);
@@ -7,7 +9,7 @@ export default function Header({filters,filter,onFilter}) {
             <ul>
                 {
                     filters.map((f,index)=>
-                        <li key={index}><button onClick={handleClick}>{f}</button></li>
+                        <li key={index}><button className={`${style.filter} ${f===filter? style.selected:''}`} onClick={handleClick}>{f}</button></li>
                     )
                 }
             </ul>
