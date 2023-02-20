@@ -9,7 +9,7 @@ export default function AddTodo({ onAdd }) {
     if (text.trim().length === 0) {
       return;
     }
-    onAdd({ id: uuidv4(), text, status: false });
+    onAdd({ id: uuidv4(), text, status: 'active' });
     setText('');
   };
   return (

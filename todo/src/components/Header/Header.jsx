@@ -1,17 +1,16 @@
 import React from 'react';
 
-export default function Header() {
-    const handleClick = () => {
-        
-    }
+export default function Header({filters,filter,onFilter}) {
+    const handleClick = (e) => onFilter(e.target.innerHTML);
     return (
         <header>
             <ul>
-                <li><button onClick={handleClick}>전체</button></li>
-                <li><button onClick={handleClick}>할일</button></li>
-                <li><button onClick={handleClick}>한일</button></li>
+                {
+                    filters.map((f,index)=>
+                        <li key={index}><button onClick={handleClick}>{f}</button></li>
+                    )
+                }
             </ul>
         </header>
     );
-}
-
+    }
