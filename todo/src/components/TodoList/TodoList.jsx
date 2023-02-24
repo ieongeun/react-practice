@@ -1,12 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import AddTodo from '../AddTodo/AddTodo.jsx';
 import Todo from '../Todo/Todo.jsx';
+import todosReducer from "../../reducer/todos-reducer.js";
 
 export default function TodoList({filter}) {
-    const [todos, setTodos] = useState(initialTodos);
-    const handleAdd = (todo) => setTodos([...todos, todo]);
-    const handleDelete = (deleteKey) => setTodos(todos.filter((todo)=> todo.id !== deleteKey));
-    const handleUpdate = (updateKey,updateTodo) => setTodos(todos.map((t)=> t.id === updateKey? updateTodo:t));
+    const [todos, dispatch] = useReducer(todosReducer, initialTodos);
+
+    const handleAdd = (todo) => {
+        dispatch({type:'add', todo});
+    }
+    const handleDelete = (deleteKey) => {
+        dispatch({type:'delete', deleteKey});
+    }
+    const handleUpdate = (updateKey,updateTodo) => {
+        dispatch({type:'update', updateKey, updateTodo});
+    }
 
     useEffect(()=>{
         localStorage.setItem('todos', JSON.stringify(todos));
@@ -19,11 +27,11 @@ export default function TodoList({filter}) {
                 {
                 filtered.map((item) => (
                     <Todo
-                        todo={item}
-                        onDelete={handleDelete}
-                        onUpdate={handleUpdate}
+                    todo={item}
+                    onDelete={handleDelete}
+                    onUpdate={handleUpdate}
                         />
-                ))
+                        ))
                 }
                 </ul>
                 <AddTodo onAdd={handleAdd} />
@@ -37,4 +45,4 @@ function filtering (filter, todos) {
     }
     return todos.filter((t)=> t.status===filter);
 }
-const initialTodos = () => JSON.parse(localStorage.getItem('todos') || "[]");
+const initialTodos = JSON.parse(localStorage.getItem('todos')) || [];
