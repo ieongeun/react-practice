@@ -16,7 +16,7 @@
 },
 "ClassName": {
 	"prefix": "cn",
-	"body": ["className={styles.$1}"],
+	"body": ["className=''"],
 	"description": "Adding className"
 	}
 }
