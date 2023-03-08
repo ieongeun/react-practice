@@ -1,11 +1,10 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 export default function Videos(){
-  const { search } = useParams();
+  const { keyword } = useParams();
   return (
     <>
-      Videos {search}
+      Videos {keyword? keyword:'🔥'}
     </>
   );
 }
-
